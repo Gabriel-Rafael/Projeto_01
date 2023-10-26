@@ -12,7 +12,7 @@
 	<title><?php echo $infoSite['titulo']; ?></title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>estilo/style.css"/>
+	<link href="<?php echo INCLUDE_PATH; ?>estilo/style.css" rel="stylesheet" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Gabriel Rafael">
 	<meta name="keywords" content="projeto web,desenvolvimento web, website,php">
