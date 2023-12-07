@@ -5,6 +5,9 @@
     font-family: "Open Sans";
 }
 
+input[type=number]{
+    margin-top: 8px;
+}
 
 html,body{
     height: 100%;
@@ -13,6 +16,27 @@ html,body{
 
 body{
     overflow-x: hidden;
+}
+
+.card-title{
+    background: #0d47a1;
+    width: 100%;
+    padding: 6px;
+    color: white;
+    font-size: 17px;
+    font-weight: lighter;
+}
+
+.gerar-pdf{
+    display: block;
+    margin: 8px 0;    
+}
+
+.gerar-pdf a{
+    color: white !important;
+    padding: 3px 8px;
+    background: #12CAD6;
+    text-decoration: none;
 }
 
 /*Página de login*/
@@ -210,6 +234,10 @@ div.box-usuario{
     font-weight: 300;
 }
 
+.box-content a{
+    color: black;
+}
+
 .items-menu{
     margin-top: 30px;
 }
@@ -263,10 +291,19 @@ table td{
 }
 
 table a.btn{
+    font-weight: normal;
+    font-size: 13px;
     color: white;
     text-decoration: none;
     padding: 4px 6px;
+}
+
+a.btn{
+    font-weight: normal;
     font-size: 13px;
+    color: white;
+    text-decoration: none;
+    padding: 4px 6px;
 }
 
 a.btn.edit{background: #F8DE22;}
@@ -374,7 +411,8 @@ a.btn.order{background: #002966;}
 }
 
 .box-content form input[type=text],
-.box-content form input[type=password]
+.box-content form input[type=password],
+.box-content form input[type=number]
 {
     margin-top: 8px;
     font-size: 17px;
@@ -417,8 +455,9 @@ a.btn.order{background: #002966;}
 }
 
 .box-content form input[type=submit]{
-    width: 90px;
+    width: auto;
     height: 40px;
+    padding: 3px 8px;
     cursor: pointer;
     margin-top: 10px;
     background: #0d47a1;
@@ -432,6 +471,12 @@ a.btn.order{background: #002966;}
     width: 100%;
     padding: 8px 0;
     text-align: center;
+    margin-bottom: 8px;
+}
+
+.box-alert a{
+    color: white;
+    font-weight: bold;
 }
 
 .sucesso{
@@ -442,6 +487,11 @@ a.btn.order{background: #002966;}
 .erro{
     
     background: #f75353;
+    color: white;
+}
+
+.atencao{
+    background: rgb(243, 130, 1);
     color: white;
 }
 
@@ -465,7 +515,135 @@ form .form-group-login:nth-of-type(2){
     top: 10px;
 }
 
+.boxes{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-single-wraper{
+    width: 33.3%;
+    padding: 20px;
+}
+
+.box-single{
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+}
+
+.box-imgs img{
+    width: 100%;
+}
+
+.box-imgs img.img-square{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 8px auto;
+}
+
+.box-imgs{
+    text-align: center;
+}
+
+.box-imgs h1{
+    color: #ccc;
+    font-size: 70px;
+    margin: 10px 0;
+}
+
+.topo-box{
+    text-align: center;
+    color: #ccc;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.topo-box img{
+    display: block;
+    max-width: 120px;
+    margin: 0 auto;
+}
+
+.topo-box h2{
+    font-size: 36px;
+}
+
+.body-box{
+    padding: 10px;
+}
+
+.body-box p{
+    color: #646464;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.group-btn{margin-top: 15px;}
+
+.group-btn a{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 3px 8px;
+}
+
+.busca{
+    margin: 10px 0;
+    width: 100%;
+    padding: 8px 10px;
+    background: #002966;
+}
+
+.busca form{
+    margin: 0;
+}
+
+.busca h4{
+    font-weight: lighter;
+    font-size: 23px;
+    color: white;
+}
+
+.busca-result{
+    color: #444;
+    border-top: 3px solid #646464;
+}
+
+.busca-result p{
+    font-size: 20px;
+}
+
+.row1{
+    float: left;
+    width: 30%;
+    padding: 8px 10px;
+}
+
+.row1 img{
+    width: 100%;
+    margin-top: 8px;
+}
+
+.row2{
+    float: left;
+    width: 70%;
+    padding: 8px 10px;
+}
+
+.row2 p{
+    padding: 8px 0;
+    color: #646464;
+    border-bottom: 1px solid #ccc;
+}
+
 @media screen and (max-width: 1024px){
+    .box-single-wraper{
+        width: 100%;
+        min-height: 0;
+    }
+
     .box-metrica-single{
         width: 100%;
     }
@@ -473,6 +651,14 @@ form .form-group-login:nth-of-type(2){
 }
 
 @media screen and (max-width: 768px){
+    .row1,.row2{
+        width: 100%;
+    }
+
+    .box-imgs,
+    .box-single{
+        width: 100% !important;
+    }
 
     .content{
         width: 100%;
@@ -497,18 +683,22 @@ form .form-group-login:nth-of-type(2){
 
 @media screen and (max-width: 400px){
 
+    .box-content{
+        padding: 8px 2%;
+    }
+
     .box-metrica-wraper h2{
-        font-size: 24px;
-        }
+    font-size: 24px;
+    }
     
-        .box-metrica-wraper p{
-        padding: 10px 0;
-        font-size: 22px;
-        }
-    
-        .menu-wraper{
-            width: 200px;
-        }
+    .box-metrica-wraper p{
+    padding: 10px 0;
+    font-size: 22px;
+    }
+
+    .menu-wraper{
+        width: 200px;
+    }
 }
 
 @media screen and (max-width: 380px){

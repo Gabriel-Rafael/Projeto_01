@@ -9,6 +9,15 @@
             '2' => 'Administrador'
         ];
 
+        public static function loadJS($files,$page){
+            $url = explode('/',@$_GET['url'])[0];
+            if($page == $url){
+                foreach ($files as $key => $value) {
+                    echo '<script src="'.INCLUDE_PATH_PAINEL.'js/'.$value.'"></script>';
+                }
+            }
+        }
+
         public static function generateSlug($str){
 			$str = mb_strtolower($str);
 			$str = preg_replace('/(â|á|ã)/', 'a', $str);
@@ -41,9 +50,19 @@
                 if(file_exists('pages/'.$url[0].'.php')){
                     include('pages/'.$url[0].'.php');
                 }else{
-                    header('Location: '.INCLUDE_PATH_PAINEL);
+                    if(Router::get('visualizar-empreendimento/?',function($par){
+                        include('views/visualizar-empreendimento.php');
+                    })){
+                        
+                    }else if(Router::post('visualizar-empreendimento/?',function($par){
+                        include('views/visualizar-empreendimento.php');
+                    })){
+                    }else{
+                        header('Location: '.INCLUDE_PATH_PAINEL);
+                    }
+                    
                 }
-            }else {
+            }else{
                 include('pages/home.php');
             }
         }
@@ -63,11 +82,17 @@
         public static function alert($tipo,$mensagem){
             if($tipo == 'sucesso'){
                 echo '<div class="box-alert sucesso"><i class="fa-regular fa-circle-check"></i> '.$mensagem.'</div>';
-            }else if($tipo = 'erro') {
+            }else if($tipo == 'erro') {
                 echo '<div class="box-alert erro"><i class="fa fa-times"></i> '.$mensagem.'</div>';
+            }else if($tipo == 'atencao'){
+                echo '<div class="box-alert atencao"><i class="fa fa-warning"></i> '.$mensagem.'</div>';
             }
         }
 
+        public static function alertJS($msg){
+            echo '<script>alert("'.$msg.'")</script>';
+        }
+        
         public static function imagemValida($imagem){
             if($imagem['type'] == 'image/jpeg' || 
                 $imagem['type'] == 'image/jpg' ||
@@ -203,6 +228,21 @@
 				$sql->execute();
 			}
 			return $sql->fetch();
+		}
+
+        /*
+            Método para selecionar apenas multiplos registros com base na query.
+        */
+
+        public static function selectQuery($table,$query = '',$arr = ''){
+			if($query != false){
+				$sql = MySql::conectar()->prepare("SELECT * FROM `$table` WHERE $query");
+				$sql->execute($arr);
+			}else{
+				$sql = MySql::conectar()->prepare("SELECT * FROM `$table`");
+				$sql->execute();
+			}
+			return $sql->fetchAll();
 		}
 
         public static function orderItem($tabela,$orderType,$idItem){
